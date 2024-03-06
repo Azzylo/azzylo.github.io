@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FF9EB5">
+  <meta name="description" content='biggames api "documentation" because im bored'>
+  <meta name="robots" content="none">
+  <meta property="og:image" content="https://www.petsimulator99.com/images/cat.png">
+  <title>API Documentation</title>
+  <link rel="icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/hybrid.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      font-family: Arial, sans-serif;
+      color: #FFF;
+      line-height: 1.6;
+      padding: 0 10%;
+    }
+
+    .endpoint {
+      background-color: #282828;
+      padding: 15px;
+      margin: 10px 5px;
+      border-radius: 5px;
+    }
+
+    .endpoint h2 {
+      margin: 0;
+    }
+
+    .description {
+      color: #DDD;
+    }
+
+    .endpoint a {
+      color: #FF9EB5;
+      /*   <3   */
+      font-family: monospace;
+      /* text-decoration: none; */
+      /* idk whether to keep or remove this lol */
+      margin: 0;
+    }
+
+    .mono {
+      color: #FF9EB5;
+      /*   <3   */
+      font-family: monospace;
+      margin: 0;
+    }
+
+    .note {
+      background-color: #ffd90020;
+      border-left: 5px solid #FFD700;
+      margin: 20px 0;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+
+    .http-method {
+      display: inline-block;
+      padding: 1px 6px;
+      font-family: monospace;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+
+    .get {
+      background-color: #68b168;
+    }
+
+    .post {
+      background-color: #6c8ebf;
+    }
+
+    caption {
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .parameter-list {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+
+    .parameter-list th,
+    .parameter-list td {
+      padding: 5px;
+      text-align: left;
+      border-bottom: 1px solid rgb(71, 71, 71);
+    }
+
+    .parameter-list th {
+      background-color: #1e1e1e9b;
+    }
+
+    pre {
+      max-height: 250px;
+      overflow: auto;
+    }
+
+    .collapsible {
+      color: white;
+      cursor: pointer;
+      border: none;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .content {
+      display: none;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>API Documentation</h1>
+  </header>
+
+  <p>I just lazily threw this singular HTML file with <i>terrible</i> embedded css in VSCode in like 10 minutes,
+    please do me a favor and dont look at the source lol</p>
+
+  <div class="note">
+    <b>INFO:</b> I do <u>NOT</u> guarantee that anything on here is correct or up to date.
+  </div>
+
+  <div class="endpoint">base path: <a href="https://www.biggames.io/api" target="_blank">biggames.io/api</a></div>
+
+  <div class="endpoint">
+    <h2>Get Pets</h2>
+    <span class="http-method get">GET</span><a href="https://www.biggames.io/api/pets" target="_blank">/pets</a>
+    <p class="description">Retrieve all pets or those matching given parameters.</p>
+    <table class="parameter-list">
+      <caption>Parameters</caption>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Required</th>
+      </tr>
+      <tr>
+        <td class="mono">page</td>
+        <td class="mono">integer</td>
+        <td>Page number</td>
+        <td class="mono">1</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td class="mono">sort</td>
+        <td class="mono">string</td>
+        <td>How to sort the results<br>
+          (options: <span class="mono">rap</span>, <span class="mono">exist</span>, <span class="mono">-rap</span>,
+          <span class="mono">-exist</span>)
+          <!-- Value Exists -->
+        </td>
+        <td class="mono">rap</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td class="mono">search</td>
+        <td class="mono">string</td>
+        <td>Search query</td>
+        <td>None</td>
+        <td>No</td>
+      </tr>
+    </table>
+    <div class="collapsible">200 Response Format [click to expand]</div>
+    <div class="content">
+      <pre><code class="language-json">{
+      "status": 200,
+      "page": 0,
+      "totalRecords": 0,
+      "maxPage": 0,
+      "data": [
+          {
+              "configName": "string",
+              "category": "string",
+              "configData": {
+                  "titanic": true,
+                  "goldenThumbnail": "rbxassetid://0",
+                  "animations": {
+                      "balloon": true,
+                      "ridingGravity": 0.0,
+                      "ridingJumpPower": 0.0,
+                      "flyHeight": 0,
+                      "flyHeightChange": 0,
+                      "ridingCameraOffset": null,
+                      "ridingTransparency": 0.0,
+                      "boneFlyingAnimation": "rbxassetid://0",
+                      "fadeFrames": [
+                          {
+                              "instant": true,
+                              "duration": 0,
+                              "iconThumbnail": "rbxassetid://0",
+                              "textureName": "string"
+                          }
+                      ],
+                      "idleActionAnimations": [
+                          [
+                              "string",
+                              0
+                          ]
+                      ],
+                      "customAnimations": true,
+                      "replacementPool": [
+                          [
+                              0,
+                              0.0
+                          ]
+                      ],
+                      "jelly": true,
+                      "replacements": [
+                          {
+                              "dst": null,
+                              "isUnique": true,
+                              "title": "string",
+                              "desc": "string"
+                          }
+                      ]
+                  },
+                  "indexObtainable": true,
+                  "flyingTitanic": true,
+                  "huge": true,
+                  "name": "string",
+                  "exclusiveLevel": 0,
+                  "fly": true,
+                  "indexDesc": "string",
+                  "thumbnail": "rbxassetid://0"
+              },
+              "collection": "string",
+              "rap": 0,
+              "exist": 0
+          }
+      ],
+      "thumbnailObj": {
+          "rbxassetid://0": "string"
+      }
+  }
+  </code></pre>
+    </div>
+  </div>
+
+  <div class="endpoint">
+    <h2>Get Exclusive Eggs</h2>
+    <span class="http-method get">GET</span><a href="https://www.biggames.io/api/eggs" target="_blank">/eggs</a>
+    <p class="description">Retrieve all Exclusive Eggs.</p>
+    <div class="collapsible">200 Response Format [click to expand]</div>
+    <div class="content">
+      <pre><code class="language-json">{
+        "status": 200,
+        "data": [
+            {
+                "configName": "string",
+                "category": "string",
+                "configData": {
+                    "disableGold": true,
+                    "rarity": {
+                        "RarityNumber": 0,
+                        "Lootbag": null,
+                        "_id": "string",
+                        "Color": null,
+                        "DisplayName": "string",
+                        "Message": null,
+                        "ItemSlot": null,
+                        "Gradient": null,
+                        "Announce": true,
+                        "_script": null
+                    },
+                    "rainbowChance": 0,
+                    "shinyChance": 0,
+                    "disableRainbow": false,
+                    "name": "string",
+                    "egg": null,
+                    "pets": [
+                        [
+                            "string",
+                            0
+                        ]
+                    ],
+                    "goldChance": 0,
+                    "icon": "rbxassetid://0",
+                    "disableModifiers": true
+                },
+                "collection": "Eggs"
+            }
+        ],
+        "thumbnailObj": {
+            "rbxassetid://0": "string"
+        },
+        "thumbnailFetchUrl": "string"
+    }
+  </code></pre>
+    </div>
+  </div>
+
+  <!-- TODO: find and add more endpoints -->
+  <script>
+    hljs.highlightAll();
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
