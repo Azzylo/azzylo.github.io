@@ -61,6 +61,14 @@
       font-family: Arial, sans-serif;
     }
 
+    .warning {
+      background-color: #ff000020;
+      border-left: 5px solid #ff0000;
+      margin: 20px 0;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+
     .http-method {
       display: inline-block;
       padding: 1px 6px;
@@ -127,12 +135,21 @@
     <h1>API Documentation</h1>
   </header>
 
-  <p>I just lazily threw together this singular HTML file with <i>terrible</i> embedded css in VSCode in like 10 minutes,
-    please do me a favor and don't look at the source lol</p>
+  <p>I just lazily threw together this singular HTML file with <i>terrible</i> embedded css in VSCode in like 10
+    minutes, please do me a favor and don't look at the source lol</p>
+
+  <div class="warning">
+    <b>IMPORTANT:</b> As of March 6th, 2024 (shortly after I published this 🥲), <b><u>neither of these endpoints work
+        anymore</u></b>. I will keep this site up nonetheless in case they've only changed the base url and not the
+    paths/parameters.<br><br>If you have any information regarding their API - if publicly accessible, that is - feel
+    free to
+    ping or DM me on Discord (@suzan).
+  </div>
 
   <div class="note">
     <b>INFO:</b> I do <u>NOT</u> guarantee that anything on here is correct or up to date.
   </div>
+
 
   <div class="endpoint">base path: <a href="https://www.biggames.io/api" target="_blank">biggames.io/api</a></div>
 
